@@ -56,7 +56,7 @@ const getPost = async (currentQuery: RouterQuery) => {
   const dataArr: PostType[] = [];
 
   querySnapshot.forEach((doc) => {
-    dataArr.push({ ...doc.data(), id: doc.id });
+    if (doc.exists()) dataArr.push({ ...doc.data(), id: doc.id });
   });
 
   return dataArr;
