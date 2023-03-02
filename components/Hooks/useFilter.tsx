@@ -56,7 +56,7 @@ const getPost = async (currentQuery: RouterQuery) => {
   const dataArr: PostType[] = [];
 
   querySnapshot.forEach((doc) => {
-    const docData: PostDataType = doc.data();
+    const docData = doc.data() as PostDataType;
     dataArr.push({ ...docData, id: doc.id });
   });
 
