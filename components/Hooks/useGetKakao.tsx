@@ -1,7 +1,7 @@
 // hooks.js
 import { useState, useEffect } from 'react';
 
-function useGetKakao(src) {
+function useGetKakao(src: any) {
   // Keep track of script status ("idle", "loading", "ready", "error")
   const [status, setStatus] = useState(src ? 'loading' : 'idle');
 
