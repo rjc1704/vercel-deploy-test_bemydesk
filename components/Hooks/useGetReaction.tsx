@@ -17,7 +17,7 @@ export default function useGetReaction() {
     );
 
     userInfor?.map(
-      (item) =>
+      (item: any) =>
         (auth.currentUser?.uid == item.id && setFollow(item.following)) ||
         (auth.currentUser?.uid == item.id && setScrap(item.scraps)),
     );
