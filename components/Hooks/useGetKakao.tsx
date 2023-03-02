@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 function useGetKakao(src: any) {
   // Keep track of script status ("idle", "loading", "ready", "error")
-  const [status, setStatus] = useState(src ? 'loading' : 'idle');
+  const [status, setStatus] = useState<string>(src ? 'loading' : 'idle');
 
   useEffect(
     () => {
@@ -16,7 +16,7 @@ function useGetKakao(src: any) {
 
       // Fetch existing script element by src
       // It may have been added by another intance of this hook
-      let script = document.querySelector(`script[src="${src}"]`);
+      let script: any = document.querySelector(`script[src="${src}"]`);
 
       if (!script) {
         // Create script
@@ -29,8 +29,8 @@ function useGetKakao(src: any) {
 
         // Store status in attribute on script
         // This can be read by other instances of this hook
-        const setAttributeFromEvent = (event) => {
-          script.setAttribute(
+        const setAttributeFromEvent = (event: any) => {
+          script?.setAttribute(
             'data-status',
             event.type === 'load' ? 'ready' : 'error',
           );
@@ -40,13 +40,13 @@ function useGetKakao(src: any) {
         script.addEventListener('error', setAttributeFromEvent);
       } else {
         // Grab existing script status from attribute and set to state.
-        setStatus(script.getAttribute('data-status'));
+        setStatus(script?.getAttribute('data-status'));
       }
 
       // Script event handler to update status in state
       // Note: Even if the script already exists we still need to add
       // event handlers to update the state for *this* hook instance.
-      const setStateFromEvent = (event) => {
+      const setStateFromEvent = (event: any) => {
         setStatus(event.type === 'load' ? 'ready' : 'error');
       };
 
