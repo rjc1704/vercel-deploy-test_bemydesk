@@ -54,7 +54,8 @@ const getPost = async (currentQuery: RouterQuery) => {
 
   const querySnapshot = await getDocs(filter);
   const dataArr: PostType[] = [];
-  querySnapshot.forEach((doc :any) => {
+
+  querySnapshot.forEach((doc) => {
     dataArr.push({ ...doc.data(), id: doc.id });
   });
 
