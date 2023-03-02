@@ -14,7 +14,7 @@ const PostListCard = ({ post, currentUserId }: PostListCardProps) => {
   const router = useRouter();
 
   // currentUser 가 해당 포스트가 좋아요 눌렀는지 여부 확인
-  const initialState = post.likes.includes(currentUserId) ? true : false;
+  const initialState = post.likes?.includes(currentUserId) ? true : false;
   const [isLikesClicked, setIsLikesClicked] = useState(initialState);
   const userProfileImg = post.userProfile ?? `images/defaultProfile.png`;
 
